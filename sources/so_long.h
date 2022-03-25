@@ -29,15 +29,30 @@
 # define KEY_RIGHT 65363
 # define KEY_DOWN 65364
 
+typedef struct s_texture
+{
+	int		textwidth;
+	int		textheight;
+	char	*path;
+	void	*img;
+	int		bpp;
+	int		size_line;
+	int		endian;
+	int		*imgd;
+	void	*mlx;
+}				t_texture;
+
 typedef struct s_game
 {
 	void	*mlx;
 	void	*mlx_win;
+	void	*screen;
 	void	*player_img;
 	void	*wall_img;
 	void	*collect_img;
 	void	*floor_img;
 	void	*exit_img;
+	unsigned int *img_screen;
 	int		x_player;
 	int		y_player;
 	int		n_collect;
@@ -50,10 +65,11 @@ typedef struct s_game
 	int		moves;
 	int		end;
 	char	**map;
+	t_texture tex[8];
 }				t_game;
 
 char	**map_reader(char *map_file);
-void	draw_img(t_game *game, void *img, int x, int y);
+void	draw_img(t_game *game, int x, int y, int i);
 int		draw_map(t_game *game);
 int		map_validation(t_game *game);
 void	player_w(t_game *game);

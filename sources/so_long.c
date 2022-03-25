@@ -31,7 +31,6 @@ static	int	arg_checker(char *av)
 int	main(int ac, char **av)
 {
 	t_game	game;
-
 	if (ac == 2)
 	{
 		game.map = map_reader(av[1]);

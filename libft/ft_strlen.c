@@ -6,13 +6,13 @@
 /*   By: hefernan <hefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 17:42:43 by hefernan          #+#    #+#             */
-/*   Updated: 2020/08/16 20:01:57 by hefernan         ###   ########.fr       */
+/*   Updated: 2021/09/09 13:26:27 by hefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t		ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 

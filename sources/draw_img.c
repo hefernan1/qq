@@ -12,27 +12,46 @@
 
 #include "so_long.h"
 
-void	draw_img(t_game *game, void *img, int x, int y)
+void	draw_img(t_game *game, int xx, int yy, int i)
 {
-	mlx_put_image_to_window(game->mlx, game->mlx_win, img, x * 32, y * 32);
+	int	x;
+	int	y;
+	int	color;
+	int	h;
+	int	w;
+
+	x = 0;
+	y = 0;
+	color = 0;
+	h = 0;
+	w = 0;
+	while (y < 32)
+	{
+		x = 0;
+		while (x < 32)
+		{
+			w = x + xx * 32;
+			h = (y +  32 * yy) * game->map_l;
+			color = game->tex[i].imgd[x + y * 32];
+			game->img_screen[w + h] = color;
+			x++;
+		}
+		y++;
+	}
 }
 
-static	void	draw_player(t_game *game, void *img, int x, int y)
+static	void	draw_player(t_game *game, int x, int y)
 {
 	game->x_player = x;
 	game->y_player = y;
-	draw_img(game, img, x, y);
+	draw_img(game, x, y, 0);
 }
 
 static	void	exit_draw(t_game *game, int x, int y)
 {
 	if (game->n_collect == 0)
-	{
-		mlx_destroy_image(game->mlx, game->exit_img);
-		game->exit_img = mlx_xpm_file_to_image
-			(game->mlx, "img/E2.xpm", &game->img_l, &game->img_h);
-	}
-	draw_img(game, game->exit_img, x, y);
+		draw_img(game,x, y, 7);
+	draw_img(game,x, y, 2);
 }
 
 int	draw_map(t_game *game)
@@ -40,6 +59,8 @@ int	draw_map(t_game *game)
 	int	x;
 	int	y;
 
+
+	//mlx_clear_window(game->mlx, game->mlx_win);
 	y = 0;
 	while (game->map[y])
 	{
@@ -47,18 +68,20 @@ int	draw_map(t_game *game)
 		while (game->map[y][x])
 		{
 			if (game->map[y][x] == '1')
-				draw_img(game, game->wall_img, x, y);
+				draw_img(game, x, y, 4);
 			else if (game->map[y][x] == '0')
-				draw_img(game, game->floor_img, x, y);
+				draw_img(game, x, y, 3);
 			else if (game->map[y][x] == 'E')
 				exit_draw(game, x, y);
 			else if (game->map[y][x] == 'P')
-				draw_player(game, game->player_img, x, y);
+				draw_player(game, x, y);
 			else if (game->map[y][x] == 'C')
-				draw_img(game, game->collect_img, x, y);
+				draw_img(game, x, y, 1);
 			x++;
 		}
 		y++;
 	}
+	mlx_put_image_to_window(game->mlx, game->mlx_win, game->screen, 0, 0);
+
 	return (0);
 }

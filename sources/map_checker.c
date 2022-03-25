@@ -19,7 +19,7 @@ static	int	map_is_rectangle(char **map)
 	i = 1;
 	if (!map)
 		return (0);
-	while (map[i] != '\0')
+	while (map[i])
 	{
 		if (ft_strlen(map[i]) != ft_strlen(map[0]))
 			return (0);
@@ -36,7 +36,7 @@ static	int	map_wall(char **map)
 
 	i = 0;
 	j = 0;
-	while (map[i] != '\0')
+	while (map[i])
 		i++;
 	while (map[0][j] != '\0' && map[i - 1][j] != '\0')
 	{
@@ -46,7 +46,7 @@ static	int	map_wall(char **map)
 	}
 	i = 1;
 	len = ft_strlen(map[i]);
-	while (map[i] != '\0')
+	while (map[i])
 	{
 		if (map[i][0] != '1' || map[i][len - 1] != '1')
 			return (0);
@@ -64,7 +64,7 @@ static	int	check_pce(t_game *game)
 	game->n_exit = 0;
 	game->n_player = 0;
 	i = 0;
-	while (game->map[i] != '\0')
+	while (game->map[i])
 	{
 		j = 0;
 		while (game->map[i][j] != '\0')
@@ -90,7 +90,7 @@ static	int	map_is_valid(char **map)
 	int	j;
 
 	i = 0;
-	while (map[i] != '\0')
+	while (map[i])
 	{
 		j = 0;
 		while (map[i][j] != '\0')

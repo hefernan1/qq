@@ -32,7 +32,7 @@ NAME			=	so_long
 CC				=	clang
 RM				=	rm -f
 
-CFLAGS			=	-Wall -Wextra -Werror
+CFLAGS			=	#-Wall -Wextra -Werror
 MLXFLAGS		=	-L. -lXext -L. -lX11
 
 .c.o:

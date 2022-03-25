@@ -31,7 +31,7 @@ static	void	player_update_image(char key, t_game *game)
 
 void	player_w(t_game *game)
 {
-	player_update_image('w', game);
+	//player_update_image('w', game);
 	if (game->map[game->y_player][game->x_player] == 'E'
 			&& game->n_collect == 0)
 	{
@@ -58,7 +58,7 @@ void	player_w(t_game *game)
 
 void	player_s(t_game *game)
 {
-	player_update_image('s', game);
+	//player_update_image('s', game);
 	if (game->map[game->y_player][game->x_player] == 'E'
 			&& game->n_collect == 0)
 	{
@@ -85,7 +85,7 @@ void	player_s(t_game *game)
 
 void	player_d(t_game *game)
 {
-	player_update_image('d', game);
+	//player_update_image('d', game);
 	if (game->map[game->y_player][game->x_player] == 'E'
 			&& game->n_collect == 0)
 	{
@@ -112,7 +112,7 @@ void	player_d(t_game *game)
 
 void	player_a(t_game *game)
 {
-	player_update_image('a', game);
+	//player_update_image('a', game);
 	if (game->map[game->y_player][game->x_player] == 'E'
 			&& game->n_collect == 0)
 	{
